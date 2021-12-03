@@ -10,4 +10,4 @@ MONGODB_URI=
 JWT_SECRET=
 ```
 
-1. ### Fill out the environment variables with yours
+2. ### Fill out the environment variables with yours
