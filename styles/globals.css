@@ -14,3 +14,31 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.center {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form > * {
+  margin: 1em;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.input > input,
+button {
+  padding: 1em;
+}

@@ -29,11 +29,19 @@ export default function Register() {
   };
 
   return (
-    <div>
+    <div className="center">
       <form onSubmit={handleSubmit}>
-        <input type="text" name="username" onChange={handleChange} />
-        <input type="password" name="password" onChange={handleChange} />
-        <button type="submit">Submit</button>
+        <div className="input">
+          <label>Username:</label>
+          <input type="text" name="username" onChange={handleChange} />
+        </div>
+        <div className="input">
+          <label>Password:</label>
+          <input type="password" name="password" onChange={handleChange} />
+        </div>
+        <button className="button" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
