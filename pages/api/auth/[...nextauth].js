@@ -53,12 +53,14 @@ export default NextAuth({
   // pages
   pages: {
     signIn: "/login",
+    error: "/login", // Changing the error redirect page to our custom login page
   },
 
   // database adapter
   adapter: MongoDBAdapter(clientPromise),
   session: {
     strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60,
   },
 
   // callback
