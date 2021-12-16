@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getSession, signIn } from "next-auth/react";
+import { getSession, signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 export default function Register() {
@@ -8,6 +8,7 @@ export default function Register() {
     username: "",
     password: "",
   });
+  const { data: session } = useSession();
 
   const handleChange = (e) => {
     setCredentials({
@@ -19,13 +20,23 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await signIn("credentials", {
-      redirect: false,
-      username: credentials.username,
-      password: credentials.password,
-    });
+    if (!session) {
+      try {
+        const result = await signIn("credentials", {
+          redirect: false,
+          username: credentials.username,
+          password: credentials.password,
+        });
 
-    router.push("/");
+        console.log(result);
+
+        if (result.ok) router.replace("/");
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      router.push("/");
+    }
   };
 
   return (

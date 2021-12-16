@@ -11,7 +11,7 @@ import bcrypt from "bcrypt";
 export default NextAuth({
   providers: [
     CredentialsProvider({
-      name: "credentials",
+      name: "Credentials",
       credentials: {
         username: { label: "Username", type: "text", placeholder: "jsmith" },
         password: { label: "Password", type: "password" },
@@ -56,12 +56,9 @@ export default NextAuth({
     error: "/login", // Changing the error redirect page to our custom login page
   },
 
-  debug: true,
-
   // database adapter
-  adapter: MongoDBAdapter(clientPromise),
   session: {
-    strategy: "database",
+    strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
   },
 
