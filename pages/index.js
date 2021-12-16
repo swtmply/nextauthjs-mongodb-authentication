@@ -7,7 +7,7 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!session) router.push("/login");
+    if (!session) router.replace("/login");
   }, [session]);
 
   if (status === "loading") return <p></p>;

@@ -19,15 +19,13 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const status = await signIn("credentials", {
+    await signIn("credentials", {
       redirect: false,
       username: credentials.username,
       password: credentials.password,
     });
 
-    if (status.ok) {
-      router.push("/");
-    }
+    router.push("/");
   };
 
   return (

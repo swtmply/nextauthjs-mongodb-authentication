@@ -56,18 +56,17 @@ export default NextAuth({
     error: "/login", // Changing the error redirect page to our custom login page
   },
 
+  debug: true,
+
   // database adapter
   adapter: MongoDBAdapter(clientPromise),
   session: {
-    strategy: "jwt",
+    strategy: "database",
     maxAge: 30 * 24 * 60 * 60,
   },
 
   // callback
   callbacks: {
-    jwt: ({ token, user }) => {
-      return token;
-    },
     session: ({ session, token }) => {
       if (token) {
         session.id = token.sub;
